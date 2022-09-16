@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.shape.Line?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
+           minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" 
+           xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="sosgame.Controller">
+    <children>
+        <Label fx:id="label" text="Label" />
+        <RadioButton fx:id = "rad1" text = "Select S" layoutX = "100"/>
+        <RadioButton fx:id = "rad2" text = "Select O" layoutX = "200"/>
+        <CheckBox fx:id = "cbox" text = "Checkbox" layoutX = "300"/>
+        <Line fx:id = "line0" startX = "0" endX = "10000"
+                              startY = "200" endY = "200"/>
+    </children>
+</Pane>
