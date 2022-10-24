@@ -1,21 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
-           minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" 
-           xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
-           fx:controller="sosgame.Controller">
-    <children>
-        <Label fx:id="label" text="Label" />
-        <RadioButton fx:id = "rad1" text = "Select S" layoutX = "100"/>
-        <RadioButton fx:id = "rad2" text = "Select O" layoutX = "200"/>
-        <CheckBox fx:id = "cbox" text = "Checkbox" layoutX = "300"/>
-        <Line fx:id = "line0" startX = "0" endX = "10000"
-                              startY = "200" endY = "200"/>
-    </children>
-</Pane>
+<AnchorPane fx:id="anchor" prefHeight="520.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sosgame.Controller">
+   <children>
+      <HBox fx:id="optionBox" alignment="TOP_RIGHT" prefHeight="69.0" prefWidth="746.0" spacing="100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <RadioButton fx:id="simpleButton" mnemonicParsing="false" selected="true" text="Simple Game">
+               <toggleGroup>
+                  <ToggleGroup fx:id="gamemode" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="generalButton" mnemonicParsing="false" text="General Game" toggleGroup="$gamemode" />
+            <HBox fx:id="sizeBox" prefHeight="69.0" prefWidth="208.0">
+               <children>
+                  <Label fx:id="sizeLabel" text="Board Size:" />
+                  <TextField fx:id="sizeField">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <GridPane fx:id="boardGrid" gridLinesVisible="true" layoutX="249.0" layoutY="132.0" prefHeight="279.0" prefWidth="396.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="129.0" AnchorPane.topAnchor="121.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.0" minWidth="10.0" prefWidth="273.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.0" minWidth="10.0" prefWidth="273.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <VBox fx:id="redBox" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="117.0" text="Red Player" textAlignment="CENTER" />
+            <RadioButton fx:id="redS" mnemonicParsing="false" selected="true" text="S">
+               <toggleGroup>
+                  <ToggleGroup fx:id="red" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="redO" mnemonicParsing="false" text="O" toggleGroup="$red" />
+         </children>
+      </VBox>
+      <VBox fx:id="blueBox" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <Label fx:id="blueLabel" prefHeight="17.0" prefWidth="103.0" text="Blue Player" textAlignment="CENTER" />
+            <RadioButton fx:id="blueS" mnemonicParsing="false" selected="true" text="S">
+               <toggleGroup>
+                  <ToggleGroup fx:id="blue" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="blueO" mnemonicParsing="false" text="O" toggleGroup="$blue" />
+         </children>
+      </VBox>
+      <HBox fx:id="turnBox" alignment="TOP_CENTER" prefHeight="33.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="240.0">
+         <children>
+            <Label fx:id="turnLabel" text="Current Turn: " />
+            <Label fx:id="turnField" text="Red" />
+         </children>
+      </HBox>
+      <MenuButton fx:id="menuButton" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" popupSide="TOP" prefHeight="25.0" prefWidth="71.0" text="Menu" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <items>
+            <MenuItem fx:id="menuNewGame" mnemonicParsing="false" text="New Game" />
+            <MenuItem mnemonicParsing="false" text="Blank" />
+         </items>
+      </MenuButton>
+   </children>
+</AnchorPane>
