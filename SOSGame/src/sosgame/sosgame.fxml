@@ -43,6 +43,12 @@
                   <ToggleGroup fx:id="red" />
                </toggleGroup></RadioButton>
             <RadioButton fx:id="redO" mnemonicParsing="false" text="O" toggleGroup="$red" />
+            <RadioButton fx:id="redHuman" mnemonicParsing="false" selected="true" text="Human">
+               <toggleGroup>
+                  <ToggleGroup fx:id="redBot" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="redComputer" mnemonicParsing="false" text="Computer" toggleGroup="$redBot" />
          </children>
       </VBox>
       <VBox fx:id="blueBox" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
@@ -53,6 +59,12 @@
                   <ToggleGroup fx:id="blue" />
                </toggleGroup></RadioButton>
             <RadioButton fx:id="blueO" mnemonicParsing="false" text="O" toggleGroup="$blue" />
+            <RadioButton fx:id="blueHuman" mnemonicParsing="false" selected="true" text="Human">
+               <toggleGroup>
+                  <ToggleGroup fx:id="blueBot" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="blueComputer" mnemonicParsing="false" text="Computer" toggleGroup="$blueBot" />
          </children>
       </VBox>
       <HBox fx:id="turnBox" alignment="TOP_CENTER" prefHeight="33.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="240.0">

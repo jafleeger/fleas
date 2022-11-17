@@ -28,6 +28,10 @@ public class Controller {
     private TextField sizeField;
     @FXML
     private RadioButton simpleButton;
+    @FXML
+    private RadioButton redComputer;
+    @FXML
+    private RadioButton blueComputer;
 
     private SimpleGame sGame;
     private GeneralGame gGame;
@@ -41,16 +45,22 @@ public class Controller {
             clearGrid();
             validateSize();
             if (simpleButton.isSelected()) {
-            sGame = new SimpleGame(size, redS, blueS, turnField, boardGrid, gridAnchor);
+            sGame = new SimpleGame(size, redS, blueS, turnField, boardGrid, gridAnchor, redComputer, blueComputer);
             sGame.boardGen();
+            if(redComputer.isSelected()) {
+                sGame.computerMove();
+            }
             } else {
-            gGame = new GeneralGame(size, redS, blueS, turnField, boardGrid, gridAnchor);
+            gGame = new GeneralGame(size, redS, blueS, turnField, boardGrid, gridAnchor, redComputer, blueComputer);
             gGame.boardGen();
+            if(redComputer.isSelected()) {
+                gGame.computerMove();
+            }
             }
         });
         clearGrid();
         validateSize();
-        sGame = new SimpleGame(5,redS, blueS, turnField, boardGrid, gridAnchor);
+        sGame = new SimpleGame(5,redS, blueS, turnField, boardGrid, gridAnchor, redComputer, blueComputer);
         sGame.boardGen();
     }
 
