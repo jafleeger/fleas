@@ -103,7 +103,7 @@ public class GeneralGame extends SimpleGame{
    @Override
    public void sosCheck(Button btn, int row, int col) {
     if(btn.getText() == "S") {
-        sValidate(row, col, false);
+        sValidate(row, col, true);
     } else if (btn.getText() == "O") {
         oValidate(row, col,true);
     } else {
