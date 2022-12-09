@@ -9,6 +9,10 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.shape.Line;
 import javafx.scene.paint.Color;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 
 public class SimpleGame{
@@ -24,6 +28,7 @@ public class SimpleGame{
     private Button[][] board;
     private String player;
     private int moves;
+    private File gameRecording;
 
     public SimpleGame(int s, RadioButton rS, RadioButton bS, Label tF, GridPane bG, AnchorPane gA, RadioButton rC, RadioButton bC){
 
@@ -51,7 +56,7 @@ public class SimpleGame{
         turnField.setText("Red");
         player = "Red";
         moves = 0;
-        
+        createRecording();
         for (int col = 0; col < size; col++){
 //Set dimensions of grid cells.
             ColumnConstraints c = new ColumnConstraints();
@@ -84,6 +89,7 @@ public class SimpleGame{
                         btn.setText("O");
                     }
                     moves++;
+                    recordMove(player,row,col);
                 } else if (player == "Blue"){
                     if (blueS.isSelected()) {
                         btn.setText("S");
@@ -91,6 +97,7 @@ public class SimpleGame{
                         btn.setText("O");
                     }
                     moves++;
+                    recordMove(player,row,col);
                 } else {
                     return;
                 }
@@ -256,12 +263,14 @@ public class SimpleGame{
                     if (oValidate(i,j,false)) {
                         System.out.println("Computer placing O");
                         moves++;
+                        recordMove(player,i,j);
                         sosCheck(board[i][j],i,j);
                         return;
                     }
                     else if (sValidate(i,j,false)) {
                         System.out.println("Computer placing S");
                         moves++;
+                        recordMove(player,i,j);
                         sosCheck(board[i][j],i,j);
                         return;
                     }
@@ -274,10 +283,41 @@ public class SimpleGame{
                 if (board[j][i].getText() == " ") {
                     board[j][i].setText("S");
                     moves++;
+                    recordMove(player,i,j);
                     sosCheck(board[i][j],i,j);
                     return;
                 }
             }
+        }
+    }
+
+    public void createRecording() {
+        boolean created = false;
+        int counter = 1;
+        while(!created) {
+            try {
+                File gameRecord = new File("recording"+counter+".txt");
+                if (gameRecord.createNewFile()) {
+                    System.out.println("New recording file created.");
+                    gameRecording = gameRecord;
+                    created = true;
+                } else {
+                    System.out.println("File " + counter + " already exists.");
+                    counter++;
+                }
+            } catch (IOException e) {
+                System.out.println("File error.");
+            }
+        }
+    }
+
+    public void recordMove(String player, int r, int c) {
+        try {
+            PrintWriter recorder = new PrintWriter(new FileWriter(gameRecording, true));
+            recorder.append(player + " " + r + " " + c + "\n");
+            recorder.close();
+        } catch (IOException e) {
+            System.out.println("File error.");
         }
     }
 }

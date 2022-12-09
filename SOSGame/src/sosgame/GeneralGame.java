@@ -53,7 +53,7 @@ public class GeneralGame extends SimpleGame{
         turnField.setText("Red");
         player = "Red";
         moves = 0;
-
+        createRecording();
         for (int col = 0; col < size; col++){
 //Set dimensions of grid cells.
             ColumnConstraints c = new ColumnConstraints();
@@ -112,6 +112,7 @@ public class GeneralGame extends SimpleGame{
         }
     }
     moves++;
+    recordMove(player, row, col);
     nextTurn();  
 }
 
@@ -288,6 +289,7 @@ public class GeneralGame extends SimpleGame{
                     board[j][i].setText("S");
                     System.out.println("Computer placing S");
                     moves++;
+                    recordMove(player,i,j);
                     nextTurn();
                     return;
                 }
